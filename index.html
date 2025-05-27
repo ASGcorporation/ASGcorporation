@@ -206,6 +206,7 @@
       background: #191e17;
       box-shadow: 0 2px 16px #0002;
       display: block;
+      border: 1px solid #444b34;
     }
     .product-title {
       font-weight: bold;
@@ -326,6 +327,7 @@
       border-radius: 9px;
       background: #191e17;
       box-shadow: 0 2px 12px #0002;
+      border: 1px solid #444b34;
     }
     .modal-product .product-title {
       font-size: 1.25em;
@@ -600,66 +602,66 @@
     </div>
   </noscript>
   <script>
-    // Dane produktów
+    // Dane produktów z odpowiednimi obrazkami
     const products = [
       {
-        img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
+        img: 'https://www.taiwangun.com/media/products/49/ea/49ea6c13dbe8b2f75b9f6b1e50e0b2b5/images/large_2022-02-15_13-19-55.jpg', // Karabin M4
         title: 'Replika karabinka ASG M4',
         price: '799 zł',
         priceNum: 799,
         desc: 'Solidna replika M4 do airsoftu, idealna na początek i dla zaawansowanych.'
       },
       {
-        img: 'https://www.taiwangun.com/media/products/9c/3f/9c3f7f6f3c3e2fbbf3c3d6ef57f6b5e9/images/large_M120.jpg',
+        img: 'https://gunfire.pl/pol_pm_Sprezyna-M120-do-replik-AEG-11896_1.jpg', // Sprężyna M120
         title: 'Sprężyna do karabinka ASG M120',
         price: '29 zł',
         priceNum: 29,
         desc: 'Sprężyna główna M120 – idealna do tuningów replik AEG. Zapewnia większą prędkość wylotową kulki.'
       },
       {
-        img: 'https://gunfire.pl/pol_pm_Lufa-precyzyjna-6-03mm-o-dlugosci-229mm-do-M4-26176_2.jpg',
+        img: 'https://gunfire.pl/pol_pm_Lufa-precyzyjna-6-03mm-o-dlugosci-229mm-do-M4-26176_2.jpg', // Lufa precyzyjna
         title: 'Lufa precyzyjna 6.03mm 229mm',
         price: '99 zł',
         priceNum: 99,
         desc: 'Lufa precyzyjna do replik M4/M16. Zwiększa celność oraz zasięg repliki.'
       },
       {
-        img: 'https://gunfire.pl/pol_pm_Tlok-polipropylenowy-do-replik-AEG-11865_1.jpg',
+        img: 'https://gunfire.pl/pol_pm_Tlok-polipropylenowy-do-replik-AEG-11865_1.jpg', // Tłok
         title: 'Tłok poliwęglanowy do AEG',
         price: '39 zł',
         priceNum: 39,
         desc: 'Wytrzymały tłok z zębami stalowymi. Idealny do mocniejszych tuningów.'
       },
       {
-        img: 'https://gunfire.pl/pol_pm_Silnik-Long-Type-High-Torque-19513_1.jpg',
+        img: 'https://gunfire.pl/pol_pm_Silnik-Long-Type-High-Torque-19513_1.jpg', // Silnik
         title: 'Silnik High Torque Long Type',
         price: '149 zł',
         priceNum: 149,
         desc: 'Silnik do replik AEG typu long. Zwiększa szybkość reakcji na spust i wytrzymałość.'
       },
       {
-        img: 'https://gunfire.pl/pol_pm_Bateria-LiPo-11-1V-1200mAh-20-40C-stick-12454_1.jpg',
+        img: 'https://gunfire.pl/pol_pm_Bateria-LiPo-11-1V-1200mAh-20-40C-stick-12454_1.jpg', // Bateria
         title: 'Bateria LiPo 11,1V 1200mAh',
         price: '89 zł',
         priceNum: 89,
         desc: 'Wysokowydajna bateria do replik ASG. Zwiększa czas pracy i wydajność repliki.'
       },
       {
-        img: 'https://gunfire.pl/pol_pm_Magazynek-hi-cap-do-M4-300-kulek-11809_1.jpg',
+        img: 'https://gunfire.pl/pol_pm_Magazynek-hi-cap-do-M4-300-kulek-11809_1.jpg', // Magazynek
         title: 'Magazynek hi-cap do M4/M16 300bb',
         price: '39 zł',
         priceNum: 39,
         desc: 'Wytrzymały magazynek typu hi-cap o pojemności 300 kulek do replik M4/M16.'
       },
       {
-        img: 'https://gunfire.pl/pol_pm_Prowadnica-sprezyny-do-G36-11244_1.jpg',
+        img: 'https://gunfire.pl/pol_pm_Prowadnica-sprezyny-do-G36-11244_1.jpg', // Prowadnica sprężyny
         title: 'Prowadnica sprężyny do G36',
         price: '24 zł',
         priceNum: 24,
         desc: 'Wzmocniona prowadnica sprężyny do replik G36. Ułatwia montaż i pracę gearboxa.'
       },
       {
-        img: 'https://gunfire.pl/pol_pm_Zestaw-zebatek-High-Speed-do-Gearbox-v2-v3-11695_1.jpg',
+        img: 'https://gunfire.pl/pol_pm_Zestaw-zebatek-High-Speed-do-Gearbox-v2-v3-11695_1.jpg', // Zębatki
         title: 'Zestaw zębatek High Speed v2/v3',
         price: '59 zł',
         priceNum: 59,
