@@ -19,8 +19,8 @@
     @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
     body {
       font-family: 'Russo One', Arial, sans-serif;
-      margin: 0; 
-      padding: 0; 
+      margin: 0;
+      padding: 0;
       background: #23281d;
       color: #e5e5e5;
     }
@@ -143,6 +143,9 @@
       max-width: 92%;
       border-radius: 6px;
       margin-bottom: 10px;
+      min-height: 110px;
+      object-fit: cover;
+      background: #222;
     }
     .product-title {
       font-weight: bold;
@@ -221,22 +224,13 @@
     <p>Wszystkie części znajdziesz na <strong>www.części-asg.pl</strong>. Gwarancja jakości oraz klimatu militarnego!</p>
   </header>
   <nav>
-    <a href="#" class="active" data-section="start">Strona główna</a>
-    <a href="#" data-section="sklep">Sklep</a>
+    <a href="#" class="active" data-section="sklep">Sklep</a>
+    <a href="#" data-section="start">Strona główna</a>
     <a href="#" data-section="uslugi">O nas</a>
     <a href="#" data-section="kontakt">Kontakt</a>
   </nav>
   <main>
-    <section id="start" class="active">
-      <h2>Witaj na stronie głównej</h2>
-      <p>Zapraszamy do naszego sklepu internetowego z częściami i akcesoriami ASG!</p>
-      <ul>
-        <li>Najlepsze części do replik ASG</li>
-        <li>Akcesoria militarne i outdoorowe</li>
-        <li>Profesjonalne doradztwo</li>
-      </ul>
-    </section>
-    <section id="sklep">
+    <section id="sklep" class="active">
       <h2>Przykładowe produkty ASG</h2>
       <div class="product-list">
         <div class="product">
@@ -275,8 +269,28 @@
           <div class="product-price">39 zł</div>
           <div class="product-desc">Wytrzymały magazynek typu hi-cap o pojemności 300 kulek do replik M4/M16.</div>
         </div>
+        <div class="product">
+          <img src="https://gunfire.pl/pol_pm_Prowadnica-sprezyny-do-G36-11244_1.jpg" alt="Prowadnica sprężyny G36">
+          <div class="product-title">Prowadnica sprężyny do G36</div>
+          <div class="product-price">24 zł</div>
+          <div class="product-desc">Wzmocniona prowadnica sprężyny do replik G36. Ułatwia montaż i pracę gearboxa.</div>
+        </div>
+        <div class="product">
+          <img src="https://gunfire.pl/pol_pm_Zestaw-zebatek-High-Speed-do-Gearbox-v2-v3-11695_1.jpg" alt="Zębatki High Speed">
+          <div class="product-title">Zestaw zębatek High Speed v2/v3</div>
+          <div class="product-price">59 zł</div>
+          <div class="product-desc">Komplet zębatek High Speed do gearboxów v2 i v3. Poprawia wydajność repliki.</div>
+        </div>
       </div>
-      <a href="#" class="btn-back" data-section="start">Powrót na stronę główną</a>
+    </section>
+    <section id="start">
+      <h2>Witaj na stronie głównej</h2>
+      <p>Zapraszamy do naszego sklepu internetowego z częściami i akcesoriami ASG!</p>
+      <ul>
+        <li>Najlepsze części do replik ASG</li>
+        <li>Akcesoria militarne i outdoorowe</li>
+        <li>Profesjonalne doradztwo</li>
+      </ul>
     </section>
     <section id="uslugi">
       <h2>Nasze usługi</h2>
@@ -320,7 +334,7 @@
     }
 
     // Obsługa kliknięć w menu
-    document.querySelectorAll('nav a, .btn-back').forEach(link => {
+    document.querySelectorAll('nav a').forEach(link => {
       link.addEventListener('click', function(e) {
         const target = this.getAttribute('data-section');
         if (target) {
@@ -330,8 +344,8 @@
       });
     });
 
-    // Domyślnie pokazuj stronę główną
-    showSection('start');
+    // Domyślnie pokazuj sklep
+    showSection('sklep');
   </script>
 </body>
 </html>
