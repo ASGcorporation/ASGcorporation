@@ -19,6 +19,8 @@
       --white: #fff;
       --shadow: 0 4px 20px rgba(0,0,0,0.16);
       --radius: 10px;
+      --cart-badge: #b7c846;
+      --cart-bg: #212415;
     }
     html, body {
       margin: 0; padding: 0;
@@ -65,6 +67,7 @@
       display: flex;
       gap: 32px;
       align-items: center;
+      position: relative;
     }
     nav a {
       text-decoration: none;
@@ -75,10 +78,45 @@
       padding: 6px 4px;
       border-bottom: 2px solid transparent;
       transition: color 0.2s, border 0.2s;
+      position: relative;
     }
     nav a.active, nav a:hover {
       color: var(--accent);
       border-bottom: 2px solid var(--accent);
+    }
+    .cart-icon {
+      display: flex;
+      align-items: center;
+      background: none;
+      border: none;
+      position: relative;
+      cursor: pointer;
+      margin-left: 10px;
+      color: var(--accent);
+      font-size: 1.5em;
+      transition: color .2s;
+    }
+    .cart-icon:hover {
+      color: #fff;
+    }
+    .cart-badge {
+      background: var(--cart-badge);
+      color: #23281d;
+      font-size: 0.9em;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 23px;
+      height: 23px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: -9px;
+      right: -13px;
+      box-shadow: 0 1px 6px #0008;
+      border: 2px solid #313a20;
+      z-index: 9;
+      pointer-events: none;
     }
     .cta-hero {
       text-align: center;
@@ -203,6 +241,7 @@
       cursor: pointer;
       box-shadow: 0 2px 10px #0005;
       transition: background 0.18s, color 0.18s;
+      margin-top: auto;
     }
     .add-to-cart-btn:hover {
       background: var(--button-hover);
@@ -247,7 +286,6 @@
     .contact-box a:hover {
       color: #7ebf49;
     }
-
     /* Modal styles */
     .modal-bg {
       position: fixed;
@@ -319,8 +357,151 @@
     .modal-product .close-btn:hover {
       color: #fff;
     }
+    .modal-product .add-to-cart-btn {
+      width: 100%;
+      margin: 0 auto 0 auto;
+      display: block;
+      font-size: 1.13em;
+    }
+    /* Koszyk modal */
+    .cart-modal-bg {
+      position: fixed;
+      left: 0; top: 0; right: 0; bottom: 0;
+      background: rgba(40,49,26,0.92);
+      z-index: 1100;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .cart-modal-bg.active {
+      display: flex;
+    }
+    .cart-modal {
+      background: var(--cart-bg);
+      color: var(--text);
+      border-radius: 16px;
+      max-width: 98vw;
+      width: 370px;
+      margin-top: 34px;
+      padding: 30px 16px 24px 16px;
+      box-shadow: 0 8px 42px #000c;
+      position: relative;
+      animation: modalPop .18s linear;
+      font-size: 1.11em;
+      z-index: 1102;
+    }
+    .cart-modal .cart-close-btn {
+      position: absolute;
+      top: 7px; right: 14px;
+      background: none;
+      border: none;
+      color: #b7c846;
+      font-size: 1.7em;
+      cursor: pointer;
+      transition: color .14s;
+      font-family: "Russo One", Arial, sans-serif;
+    }
+    .cart-modal .cart-close-btn:hover {
+      color: #fff;
+    }
+    .cart-modal h2 {
+      color: var(--accent);
+      margin: 0 0 18px 0;
+      font-family: 'Russo One', Arial, sans-serif;
+      text-align: center;
+      font-size: 1.24em;
+    }
+    .cart-list {
+      list-style: none;
+      margin: 0 0 18px 0;
+      padding: 0;
+      max-height: 270px;
+      overflow-y: auto;
+    }
+    .cart-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      background: #292f1e;
+      border-radius: 7px;
+      padding: 8px 4px 8px 8px;
+    }
+    .cart-list img {
+      width: 48px;
+      height: 38px;
+      object-fit: cover;
+      border-radius: 5px;
+      background: #191e17;
+      box-shadow: 0 2px 8px #0001;
+      border: 1px solid #313a20;
+    }
+    .cart-prod-title {
+      font-size: 1em;
+      color: var(--accent);
+      min-width: 0;
+      flex: 1 1 auto;
+      margin-right: 3px;
+      font-weight: bold;
+    }
+    .cart-prod-price {
+      color: #7ebf49;
+      font-size: 1em;
+      font-weight: 700;
+      margin-right: 8px;
+    }
+    .cart-remove-btn {
+      background: #a32323;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: .97em;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: background .14s;
+    }
+    .cart-remove-btn:hover {
+      background: #e74c3c;
+    }
+    .cart-total {
+      font-size: 1.12em;
+      text-align: right;
+      color: var(--accent);
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .cart-empty {
+      color: #b7c846;
+      text-align: center;
+      margin: 12px 0 20px 0;
+    }
+    @media (max-width: 900px) {
+      .product-catalog {
+        grid-template-columns: 1fr 1fr;
+      }
+      .info-sections {
+        flex-direction: column;
+        gap: 22px;
+        align-items: stretch;
+      }
+    }
+    @media (max-width: 600px) {
+      .top-bar, .cta-hero, main {
+        padding-left: 2vw;
+        padding-right: 2vw;
+      }
+      .product-catalog {
+        grid-template-columns: 1fr;
+      }
+      .info-box {
+        min-width: 0;
+      }
+      header {
+        padding: 4px 0 0 0;
+      }
+    }
     @media (max-width: 400px) {
-      .modal-product { padding: 8px 2vw 8px 2vw; }
+      .modal-product, .cart-modal { padding: 8px 2vw 8px 2vw; }
       .modal-product img { max-width: 90vw; }
     }
     footer {
@@ -346,6 +527,10 @@
         <a href="#" class="active" data-section="sklep">Sklep</a>
         <a href="#" data-section="uslugi">Usługi</a>
         <a href="#" data-section="kontakt">Kontakt</a>
+        <button class="cart-icon" id="cart-btn" title="Koszyk">
+          <span style="font-size:1.2em;">&#128722;</span>
+          <span class="cart-badge" id="cart-count">0</span>
+        </button>
       </nav>
     </div>
     <div class="cta-hero">
@@ -381,6 +566,7 @@
       </div>
     </div>
   </main>
+  <!-- Produkt szczegóły modal -->
   <div class="modal-bg" id="modal-bg">
     <div class="modal-product" id="modal-product">
       <button class="close-btn" id="close-modal" aria-label="Zamknij">&times;</button>
@@ -388,6 +574,17 @@
       <div class="product-title" id="modal-title"></div>
       <div class="product-price" id="modal-price"></div>
       <div class="product-desc" id="modal-desc"></div>
+      <button class="add-to-cart-btn" id="modal-add-to-cart">Dodaj do koszyka</button>
+    </div>
+  </div>
+  <!-- Koszyk modal -->
+  <div class="cart-modal-bg" id="cart-modal-bg">
+    <div class="cart-modal" id="cart-modal">
+      <button class="cart-close-btn" id="cart-close-btn" aria-label="Zamknij">&#10005;</button>
+      <h2>Twój koszyk</h2>
+      <ul class="cart-list" id="cart-list"></ul>
+      <div class="cart-total" id="cart-total"></div>
+      <div class="cart-empty" id="cart-empty" style="display:none;">Koszyk jest pusty.</div>
     </div>
   </div>
   <footer>
@@ -409,57 +606,68 @@
         img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
         title: 'Replika karabinka ASG M4',
         price: '799 zł',
+        priceNum: 799,
         desc: 'Solidna replika M4 do airsoftu, idealna na początek i dla zaawansowanych.'
       },
       {
         img: 'https://www.taiwangun.com/media/products/9c/3f/9c3f7f6f3c3e2fbbf3c3d6ef57f6b5e9/images/large_M120.jpg',
         title: 'Sprężyna do karabinka ASG M120',
         price: '29 zł',
+        priceNum: 29,
         desc: 'Sprężyna główna M120 – idealna do tuningów replik AEG. Zapewnia większą prędkość wylotową kulki.'
       },
       {
         img: 'https://gunfire.pl/pol_pm_Lufa-precyzyjna-6-03mm-o-dlugosci-229mm-do-M4-26176_2.jpg',
         title: 'Lufa precyzyjna 6.03mm 229mm',
         price: '99 zł',
+        priceNum: 99,
         desc: 'Lufa precyzyjna do replik M4/M16. Zwiększa celność oraz zasięg repliki.'
       },
       {
         img: 'https://gunfire.pl/pol_pm_Tlok-polipropylenowy-do-replik-AEG-11865_1.jpg',
         title: 'Tłok poliwęglanowy do AEG',
         price: '39 zł',
+        priceNum: 39,
         desc: 'Wytrzymały tłok z zębami stalowymi. Idealny do mocniejszych tuningów.'
       },
       {
         img: 'https://gunfire.pl/pol_pm_Silnik-Long-Type-High-Torque-19513_1.jpg',
         title: 'Silnik High Torque Long Type',
         price: '149 zł',
+        priceNum: 149,
         desc: 'Silnik do replik AEG typu long. Zwiększa szybkość reakcji na spust i wytrzymałość.'
       },
       {
         img: 'https://gunfire.pl/pol_pm_Bateria-LiPo-11-1V-1200mAh-20-40C-stick-12454_1.jpg',
         title: 'Bateria LiPo 11,1V 1200mAh',
         price: '89 zł',
+        priceNum: 89,
         desc: 'Wysokowydajna bateria do replik ASG. Zwiększa czas pracy i wydajność repliki.'
       },
       {
         img: 'https://gunfire.pl/pol_pm_Magazynek-hi-cap-do-M4-300-kulek-11809_1.jpg',
         title: 'Magazynek hi-cap do M4/M16 300bb',
         price: '39 zł',
+        priceNum: 39,
         desc: 'Wytrzymały magazynek typu hi-cap o pojemności 300 kulek do replik M4/M16.'
       },
       {
         img: 'https://gunfire.pl/pol_pm_Prowadnica-sprezyny-do-G36-11244_1.jpg',
         title: 'Prowadnica sprężyny do G36',
         price: '24 zł',
+        priceNum: 24,
         desc: 'Wzmocniona prowadnica sprężyny do replik G36. Ułatwia montaż i pracę gearboxa.'
       },
       {
         img: 'https://gunfire.pl/pol_pm_Zestaw-zebatek-High-Speed-do-Gearbox-v2-v3-11695_1.jpg',
         title: 'Zestaw zębatek High Speed v2/v3',
         price: '59 zł',
+        priceNum: 59,
         desc: 'Komplet zębatek High Speed do gearboxów v2 i v3. Poprawia wydajność repliki.'
       }
     ];
+
+    let cart = [];
 
     // Render katalogu produktów
     function renderCatalog() {
@@ -476,17 +684,33 @@
           <div class="product-title">${product.title}</div>
           <div class="product-price">${product.price}</div>
           <div class="product-desc">${product.desc}</div>
+          <button class="add-to-cart-btn">Dodaj do koszyka</button>
         `;
-        div.addEventListener('click', () => showProductModal(idx));
+        // Szczegóły produktu (klik na kafelek lub Enter/Spacja)
+        div.addEventListener('click', (e) => {
+          if (e.target.classList.contains('add-to-cart-btn')) {
+            addToCart(idx);
+            e.stopPropagation();
+          } else {
+            showProductModal(idx);
+          }
+        });
         div.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' || e.key === ' ') showProductModal(idx);
+        });
+        // Dodanie do koszyka z kafelka
+        div.querySelector('.add-to-cart-btn').addEventListener('click', (e) => {
+          addToCart(idx);
+          e.stopPropagation();
         });
         catalog.appendChild(div);
       });
     }
 
-    // Modal
+    // Modal produktu
+    let currentModalProduct = null;
     function showProductModal(idx) {
+      currentModalProduct = idx;
       const product = products[idx];
       document.getElementById('modal-img').src = product.img;
       document.getElementById('modal-img').alt = product.title;
@@ -509,6 +733,86 @@
         closeModal();
       }
     });
+    // Dodanie do koszyka z modala
+    document.getElementById('modal-add-to-cart').onclick = function() {
+      if(currentModalProduct!==null) addToCart(currentModalProduct);
+      closeModal();
+    };
+
+    // Koszyk
+    function addToCart(idx) {
+      const prod = products[idx];
+      // Sprawdź czy już w koszyku
+      let found = cart.findIndex(el => el.idx === idx);
+      if(found >= 0) {
+        cart[found].qty += 1;
+      } else {
+        cart.push({idx: idx, qty: 1});
+      }
+      updateCartBadge();
+      saveCart();
+    }
+    function updateCartBadge() {
+      let sum = cart.reduce((a, b) => a + b.qty, 0);
+      document.getElementById('cart-count').textContent = sum;
+    }
+    // Koszyk modal
+    function showCart() {
+      renderCart();
+      document.getElementById('cart-modal-bg').classList.add('active');
+      document.body.style.overflow = "hidden";
+    }
+    function closeCart() {
+      document.getElementById('cart-modal-bg').classList.remove('active');
+      document.body.style.overflow = "";
+    }
+    document.getElementById('cart-btn').onclick = showCart;
+    document.getElementById('cart-close-btn').onclick = closeCart;
+    document.getElementById('cart-modal-bg').onclick = function(e) {
+      if(e.target === this) closeCart();
+    };
+    document.addEventListener('keydown', function(e) {
+      if(document.getElementById('cart-modal-bg').classList.contains('active') && e.key === 'Escape') {
+        closeCart();
+      }
+    });
+    function renderCart() {
+      const cartList = document.getElementById('cart-list');
+      const cartTotal = document.getElementById('cart-total');
+      const cartEmpty = document.getElementById('cart-empty');
+      cartList.innerHTML = '';
+      let total = 0;
+      if(cart.length === 0) {
+        cartEmpty.style.display = '';
+        cartTotal.style.display = 'none';
+      } else {
+        cartEmpty.style.display = 'none';
+        cartTotal.style.display = '';
+        cart.forEach((item, i) => {
+          const prod = products[item.idx];
+          total += prod.priceNum * item.qty;
+          let li = document.createElement('li');
+          li.innerHTML = `
+            <img src="${prod.img}" alt="${prod.title}">
+            <span class="cart-prod-title">${prod.title}</span>
+            <span class="cart-prod-price">${prod.price}</span>
+            <span style="margin-right:7px;">x${item.qty}</span>
+            <button class="cart-remove-btn" title="Usuń z koszyka">&times;</button>
+          `;
+          li.querySelector('.cart-remove-btn').onclick = () => {
+            removeFromCart(i);
+          };
+          cartList.appendChild(li);
+        });
+        cartTotal.textContent = 'Razem: ' + total + ' zł';
+      }
+    }
+    function removeFromCart(i) {
+      cart.splice(i,1);
+      updateCartBadge();
+      renderCart();
+      saveCart();
+    }
 
     // Sekcje strony
     function showSection(id) {
@@ -530,8 +834,22 @@
       });
     });
 
+    // Zapamiętaj koszyk w localStorage
+    function saveCart() {
+      try { localStorage.setItem('sklep_asg_cart', JSON.stringify(cart)); } catch(e){}
+    }
+    function loadCart() {
+      try {
+        let c = localStorage.getItem('sklep_asg_cart');
+        if(c) cart = JSON.parse(c);
+        else cart = [];
+      } catch(e){ cart = []; }
+    }
+
     // Start
+    loadCart();
     renderCatalog();
+    updateCartBadge();
     showSection('sklep');
   </script>
 </body>
