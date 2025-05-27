@@ -1,1 +1,52 @@
+// Otwieranie checkout
+document.getElementById('checkout-btn').onclick = function() {
+  if(cart.length === 0) return;
+  document.getElementById('checkout-modal-bg').classList.add('active');
+  document.body.style.overflow = "hidden";
+  document.getElementById('checkout-form').style.display = '';
+  document.getElementById('checkout-success').style.display = 'none';
+  document.getElementById('checkout-form').reset();
+};
+// Zamknięcie checkout
+document.getElementById('close-checkout-btn').onclick = function() {
+  document.getElementById('checkout-modal-bg').classList.remove('active');
+  document.body.style.overflow = "";
+};
+document.getElementById('checkout-modal-bg').onclick = function(e) {
+  if(e.target === this) {
+    document.getElementById('checkout-modal-bg').classList.remove('active');
+    document.body.style.overflow = "";
+  }
+};
 
+// Finalizacja zamówienia
+document.getElementById('checkout-form').onsubmit = function(e) {
+  e.preventDefault();
+  // suma zamówienia
+  let total = 0;
+  cart.forEach(item => {
+    const prod = products[item.idx];
+    total += prod.priceNum * item.qty;
+  });
+  // nalicz punkty użytkownikowi
+  if (user && users[user.username]) {
+    let points = getUserPoints();
+    points += total; // 1zł = 1pkt
+    setUserPoints(points);
+    const up = document.getElementById('user-points');
+    if(up) up.textContent = points;
+  }
+  document.getElementById('checkout-form').style.display = 'none';
+  document.getElementById('checkout-success').style.display = '';
+  document.getElementById('checkout-success').textContent =
+    'Dziękujemy za zamówienie! Potwierdzenie wysłaliśmy na e-mail. Twoje punkty Militaria zostały naliczone.';
+  cart = [];
+  updateCartBadge();
+  saveCart();
+  setTimeout(() => {
+    document.getElementById('checkout-modal-bg').classList.remove('active');
+    document.body.style.overflow = "";
+    renderCart();
+  }, 2300);
+  return false;
+};
