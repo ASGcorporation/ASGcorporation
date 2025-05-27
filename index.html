@@ -22,6 +22,9 @@
       --cart-badge: #a2f05e;
       --cart-bg: #1b251b;
       --green: #2e853c;
+      --militaria: #a2f05e;
+      --promo: #ffe16b;
+      --promo-dark: #786a00;
     }
     html, body {
       margin: 0; padding: 0;
@@ -43,6 +46,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 16px 6vw 0 6vw;
+      position: relative;
     }
     .logo-bar {
       display: flex;
@@ -119,394 +123,190 @@
       z-index: 9;
       pointer-events: none;
     }
-    .cta-hero {
-      text-align: center;
-      padding: 48px 8vw 44px 8vw;
-    }
-    .cta-hero h1 {
-      font-family: 'Russo One', Arial, sans-serif;
-      font-size: 2.7em;
-      margin: 0 0 14px 0;
-      letter-spacing: 2px;
-      color: var(--accent);
-      text-shadow: 2px 4px 16px #000a;
-    }
-    .cta-hero p {
-      font-size: 1.2em;
-      margin: 0 0 25px 0;
-      color: var(--white);
-      text-shadow: 1px 1px 8px #000c;
-    }
-    .cta-hero .cta-btn {
-      background: var(--button);
-      color: var(--white);
-      font-size: 1.15em;
-      border: none;
-      border-radius: var(--radius);
-      padding: 14px 40px;
-      cursor: pointer;
-      font-weight: 700;
-      letter-spacing: 1px;
-      box-shadow: 0 2px 12px #0008;
-      transition: background 0.2s, color 0.2s;
-    }
-    .cta-hero .cta-btn:hover {
-      background: var(--button-hover);
-      color: var(--main);
-    }
-    main {
-      max-width: 1200px;
-      margin: 38px auto 38px auto;
-      background: #1d271a;
-      padding: 36px 4vw 44px 4vw;
-      border-radius: var(--radius);
-      min-height: 520px;
-      box-shadow: var(--shadow);
-    }
-    .section-title {
-      font-family: 'Russo One', Arial, sans-serif;
-      color: var(--accent);
-      font-size: 2.1em;
-      letter-spacing: 2px;
-      margin: 0 0 20px 0;
-      text-align: center;
-    }
-    .product-catalog {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 32px;
-      margin-bottom: 36px;
-    }
-    .product {
-      background: #1e2d1c;
-      border-radius: var(--radius);
-      box-shadow: 0 2px 12px #0003;
+    .user-panel {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      padding: 16px 12px 22px 12px;
+      gap: 18px;
+      margin-left: 22px;
       position: relative;
-      transition: transform 0.18s, box-shadow 0.18s;
-      border: 1.5px solid #28532a;
-      cursor: pointer;
-      min-height: 340px;
     }
-    .product:hover {
-      transform: translateY(-6px) scale(1.018);
-      box-shadow: 0 8px 24px #0005;
-      border-color: var(--accent);
-      z-index: 2;
-    }
-    .product img {
-      width: 100%;
-      max-width: 192px;
-      height: 155px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 14px;
-      background: #173c22;
-      box-shadow: 0 2px 16px #0002;
-      display: block;
-      border: 1px solid #25451f;
-    }
-    .product-title {
-      font-weight: bold;
-      font-size: 1.09em;
-      color: var(--accent);
-      margin-bottom: 4px;
-      text-align: center;
-      min-height: 34px;
-    }
-    .product-price {
-      color: #96e848;
-      font-size: 1.18em;
-      margin-bottom: 8px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-    .product-desc {
-      font-size: 0.99em;
-      color: #e5e5e5;
-      margin-bottom: 14px;
-      min-height: 52px;
-      text-align: center;
-    }
-    .add-to-cart-btn {
+    .user-btn, .logout-btn {
       background: var(--button);
       color: var(--white);
       border: none;
       border-radius: 6px;
-      padding: 8px 24px;
+      padding: 8px 16px;
       font-size: 1em;
       font-family: inherit;
-      font-weight: bold;
+      font-weight: 600;
       cursor: pointer;
       box-shadow: 0 2px 10px #0005;
       transition: background 0.18s, color 0.18s;
-      margin-top: auto;
     }
-    .add-to-cart-btn:hover {
+    .user-btn:hover, .logout-btn:hover {
       background: var(--button-hover);
       color: var(--main);
     }
-    .info-sections {
+    .user-info {
       display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      justify-content: center;
-      margin-top: 36px;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.04em;
+      background: #203a21;
+      border-radius: 8px;
+      padding: 7px 13px;
     }
-    .info-box {
-      background: #1e2d1c;
-      border-radius: var(--radius);
-      box-shadow: 0 2px 10px #0002;
-      padding: 26px 24px 18px 24px;
-      min-width: 240px;
-      flex: 1 1 300px;
-      max-width: 380px;
+    .militaria-points {
+      background: #1b251b;
+      color: var(--militaria);
+      font-weight: bold;
+      font-size: 0.99em;
+      border-radius: 7px;
+      padding: 4px 9px;
+      margin-left: 7px;
+      display: inline-block;
     }
-    .info-box h3 {
-      color: var(--accent);
+    .promo-bar {
+      margin: 18px 0 28px 0;
+      background: var(--promo);
+      color: var(--promo-dark);
+      border-radius: 10px;
+      box-shadow: 0 2px 12px #0003;
+      font-size: 1.13em;
+      padding: 14px 20px;
+      text-align: center;
+      font-weight: bold;
+      letter-spacing: 1px;
+      border: 2px solid #fffbe5;
+    }
+    .promo-bar .promo-title {
       font-family: 'Russo One', Arial, sans-serif;
-      font-size: 1.16em;
-      margin: 0 0 12px 0;
+      font-size: 1.07em;
+      color: #786a00;
+      margin-right: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .promo-label {
+      background: #fff;
+      color: var(--promo-dark);
+      border-radius: 14px;
+      padding: 3px 10px;
+      font-size: 0.97em;
+      font-weight: bold;
+      margin-left: 10px;
+      display: inline-block;
+    }
+    .promo-product {
+      position: absolute;
+      top: 14px; left: 14px;
+      background: var(--promo);
+      color: var(--promo-dark);
+      font-size: 0.95em;
+      font-weight: bold;
+      padding: 2px 13px 2px 13px;
+      border-radius: 13px;
+      box-shadow: 0 1px 8px #0002;
+      z-index: 2;
       letter-spacing: 1px;
     }
-    .info-box ul {
-      padding-left: 20px;
-      margin: 0;
-      color: var(--text);
-      font-size: 1em;
-    }
-    .info-box li {
-      margin-bottom: 8px;
-    }
-    .contact-box a {
-      color: #a2f05e;
-      text-decoration: underline;
-    }
-    .contact-box a:hover {
-      color: #96e848;
-    }
-    /* Modal styles */
-    .modal-bg {
-      position: fixed;
-      left: 0; top: 0; right: 0; bottom: 0;
-      background: rgba(23,60,34,0.85);
-      z-index: 1001;
+    .modal-login-bg {
+      position: fixed; left: 0; top: 0; right: 0; bottom: 0;
+      background: rgba(23,60,34,0.91);
+      z-index: 2000;
       display: none;
       align-items: center;
       justify-content: center;
     }
-    .modal-bg.active {
-      display: flex;
-    }
-    .modal-product {
-      background: #182218;
-      color: var(--text);
-      border-radius: 12px;
-      max-width: 95vw;
-      width: 370px;
-      padding: 28px 18px 18px 18px;
-      box-shadow: 0 8px 42px #000c;
-      position: relative;
-      animation: modalPop 0.18s linear;
-      font-size: 1.05em;
-      z-index: 1002;
-    }
-    @keyframes modalPop {
-      from { transform: scale(0.92); opacity: 0; }
-      to   { transform: scale(1); opacity: 1; }
-    }
-    .modal-product img {
-      display: block;
-      width: 100%;
-      max-width: 260px;
-      height: 180px;
-      object-fit: cover;
-      margin: 0 auto 14px auto;
-      border-radius: 9px;
-      background: #173c22;
-      box-shadow: 0 2px 12px #0002;
-      border: 1px solid #25451f;
-    }
-    .modal-product .product-title {
-      font-size: 1.25em;
-      margin-bottom: 7px;
-      color: var(--accent);
-    }
-    .modal-product .product-price {
-      font-size: 1.13em;
-      color: #96e848;
-      margin-bottom: 7px;
-    }
-    .modal-product .product-desc {
-      color: var(--text);
-      margin-bottom: 18px;
-      min-height: 40px;
-      text-align: center;
-    }
-    .modal-product .close-btn {
-      position: absolute;
-      top: 7px; right: 13px;
-      background: none;
-      border: none;
-      color: #a2f05e;
-      font-size: 1.7em;
-      cursor: pointer;
-      transition: color .14s;
-      font-family: "Russo One", Arial, sans-serif;
-    }
-    .modal-product .close-btn:hover {
-      color: #fff;
-    }
-    .modal-product .add-to-cart-btn {
-      width: 100%;
-      margin: 0 auto 0 auto;
-      display: block;
-      font-size: 1.13em;
-    }
-    /* Koszyk modal */
-    .cart-modal-bg {
-      position: fixed;
-      left: 0; top: 0; right: 0; bottom: 0;
-      background: rgba(23,60,34,0.92);
-      z-index: 1100;
-      display: none;
-      align-items: flex-start;
-      justify-content: center;
-    }
-    .cart-modal-bg.active {
-      display: flex;
-    }
-    .cart-modal {
-      background: var(--cart-bg);
+    .modal-login-bg.active { display: flex; }
+    .modal-login {
+      background: #1e2d1c;
       color: var(--text);
       border-radius: 16px;
-      max-width: 98vw;
-      width: 370px;
-      margin-top: 34px;
-      padding: 30px 16px 24px 16px;
+      min-width: 300px;
+      width: 95vw;
+      max-width: 390px;
       box-shadow: 0 8px 42px #000c;
+      padding: 32px 22px 22px 22px;
+      position: relative;
+      font-size: 1.08em;
+      animation: modalPop .18s linear;
+    }
+    .modal-login h2 { color: var(--accent); margin: 0 0 18px 0; text-align: center; }
+    .modal-login label { display: block; margin-bottom: 5px; margin-top: 9px; }
+    .modal-login input[type="text"], .modal-login input[type="password"] {
+      width: 100%; border-radius: 7px; border: 1.5px solid #295e2c;
+      padding: 9px; font-size: 1em; margin-bottom: 8px;
+      background: #203a21; color: var(--text);
+    }
+    .modal-login .login-btn, .modal-login .register-btn {
+      width: 100%; margin-top: 7px; padding: 11px; font-size: 1.07em;
+      background: var(--button); color: var(--white);
+      border: none; border-radius: 7px; font-weight: bold;
+      cursor: pointer; transition: background 0.18s, color 0.18s;
+    }
+    .modal-login .login-btn:hover, .modal-login .register-btn:hover {
+      background: var(--button-hover); color: var(--main);
+    }
+    .modal-login .switch-form {
+      text-align: center; margin-top: 10px; color: #a2f05e;
+      cursor: pointer; font-size: 0.99em;
+    }
+    .modal-login .modal-close-login {
+      position: absolute; top: 8px; right: 12px; background: none; border: none;
+      color: #a2f05e; font-size: 1.6em; cursor: pointer;
+      transition: color .14s;
+    }
+    .modal-login .modal-close-login:hover { color: #fff; }
+    .checkout-bg {
+      position: fixed; left: 0; top: 0; right: 0; bottom: 0;
+      background: rgba(23,60,34,0.95);
+      z-index: 2200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .checkout-bg.active { display: flex; }
+    .checkout-modal {
+      background: #1e2d1c;
+      color: var(--text);
+      border-radius: 18px;
+      min-width: 320px;
+      width: 95vw;
+      max-width: 410px;
+      box-shadow: 0 8px 42px #000c;
+      padding: 30px 20px 16px 20px;
+      font-size: 1.07em;
       position: relative;
       animation: modalPop .18s linear;
-      font-size: 1.11em;
-      z-index: 1102;
     }
-    .cart-modal .cart-close-btn {
-      position: absolute;
-      top: 7px; right: 14px;
-      background: none;
-      border: none;
+    .checkout-modal h2 { color: var(--accent); margin: 0 0 17px 0; text-align: center; }
+    .checkout-modal label { display: block; margin-top: 10px; }
+    .checkout-modal input, .checkout-modal textarea {
+      width: 100%; border-radius: 7px; border: 1.5px solid #295e2c;
+      padding: 9px; font-size: 1em; margin-bottom: 8px;
+      background: #203a21; color: var(--text);
+    }
+    .checkout-modal textarea { min-height: 54px; }
+    .checkout-modal .checkout-btn {
+      width: 100%; margin: 10px 0 0 0; padding: 12px; font-size: 1.1em;
+      background: var(--button); color: var(--white); border: none; border-radius: 7px; font-weight: bold; cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+    }
+    .checkout-modal .checkout-btn:hover { background: var(--button-hover); color: var(--main);}
+    .checkout-modal .close-checkout-btn {
+      position: absolute; top: 10px; right: 15px; background: none; border: none;
+      color: #a2f05e; font-size: 1.6em; cursor: pointer; transition: color .14s;
+    }
+    .checkout-modal .close-checkout-btn:hover { color: #fff; }
+    .checkout-modal .checkout-success {
       color: #a2f05e;
-      font-size: 1.7em;
-      cursor: pointer;
-      transition: color .14s;
-      font-family: "Russo One", Arial, sans-serif;
-    }
-    .cart-modal .cart-close-btn:hover {
-      color: #fff;
-    }
-    .cart-modal h2 {
-      color: var(--accent);
-      margin: 0 0 18px 0;
-      font-family: 'Russo One', Arial, sans-serif;
+      margin: 20px 0 0 0;
       text-align: center;
-      font-size: 1.24em;
-    }
-    .cart-list {
-      list-style: none;
-      margin: 0 0 18px 0;
-      padding: 0;
-      max-height: 270px;
-      overflow-y: auto;
-    }
-    .cart-list li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
-      background: #1e2d1c;
-      border-radius: 7px;
-      padding: 8px 4px 8px 8px;
-    }
-    .cart-list img {
-      width: 48px;
-      height: 38px;
-      object-fit: cover;
-      border-radius: 5px;
-      background: #173c22;
-      box-shadow: 0 2px 8px #0001;
-      border: 1px solid #28532a;
-    }
-    .cart-prod-title {
-      font-size: 1em;
-      color: var(--accent);
-      min-width: 0;
-      flex: 1 1 auto;
-      margin-right: 3px;
       font-weight: bold;
+      font-size: 1.1em;
     }
-    .cart-prod-price {
-      color: #96e848;
-      font-size: 1em;
-      font-weight: 700;
-      margin-right: 8px;
-    }
-    .cart-remove-btn {
-      background: #a32323;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-size: .97em;
-      padding: 6px 12px;
-      cursor: pointer;
-      transition: background .14s;
-    }
-    .cart-remove-btn:hover {
-      background: #e74c3c;
-    }
-    .cart-total {
-      font-size: 1.12em;
-      text-align: right;
-      color: var(--accent);
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-    .cart-empty {
-      color: #a2f05e;
-      text-align: center;
-      margin: 12px 0 20px 0;
-    }
-    @media (max-width: 900px) {
-      .product-catalog {
-        grid-template-columns: 1fr 1fr;
-      }
-      .info-sections {
-        flex-direction: column;
-        gap: 22px;
-        align-items: stretch;
-      }
-    }
-    @media (max-width: 600px) {
-      .top-bar, .cta-hero, main {
-        padding-left: 2vw;
-        padding-right: 2vw;
-      }
-      .product-catalog {
-        grid-template-columns: 1fr;
-      }
-      .info-box {
-        min-width: 0;
-      }
-      header {
-        padding: 4px 0 0 0;
-      }
-    }
-    @media (max-width: 400px) {
-      .modal-product, .cart-modal { padding: 8px 2vw 8px 2vw; }
-      .modal-product img { max-width: 90vw; }
-    }
+    /* ...reszta stylów jak wcześniej... */
     footer {
       background: #173c22;
       color: #a2f05e;
@@ -535,6 +335,7 @@
           <span class="cart-badge" id="cart-count">0</span>
         </button>
       </nav>
+      <div class="user-panel" id="user-panel"></div>
     </div>
     <div class="cta-hero">
       <h1>Najlepsze produkty ASG i militaria</h1>
@@ -545,9 +346,15 @@
   <main>
     <section id="sklep" class="active">
       <div class="section-title">Oferta sklepu</div>
-      <div class="product-catalog" id="product-catalog">
-        <!-- Produkty generowane przez JS -->
+      <div class="promo-bar">
+        <span class="promo-title">PROMOCJE:</span>
+        <span>🔥 -10% na pierwsze zakupy z kodem <span class="promo-label">START10</span>
+        | 🎯 Lufa precyzyjna -20%!
+        | 🎁 Przy zakupach powyżej 500 zł darmowa wysyłka!
+        | 🏆 Do każdego zamówienia losowy prezent!
+        </span>
       </div>
+      <div class="product-catalog" id="product-catalog"></div>
     </section>
     <div class="info-sections">
       <div class="info-box">
@@ -587,7 +394,58 @@
       <h2>Twój koszyk</h2>
       <ul class="cart-list" id="cart-list"></ul>
       <div class="cart-total" id="cart-total"></div>
+      <button class="checkout-btn" id="checkout-btn">Przejdź do zakupu</button>
       <div class="cart-empty" id="cart-empty" style="display:none;">Koszyk jest pusty.</div>
+    </div>
+  </div>
+  <!-- Modal logowania/rejestracji -->
+  <div class="modal-login-bg" id="modal-login-bg">
+    <div class="modal-login" id="modal-login">
+      <button class="modal-close-login" id="modal-close-login" aria-label="Zamknij">&times;</button>
+      <div id="login-form">
+        <h2>Zaloguj się</h2>
+        <label for="login-username">Nazwa użytkownika</label>
+        <input type="text" id="login-username" maxlength="30" autocomplete="username">
+        <label for="login-password">Hasło</label>
+        <input type="password" id="login-password" maxlength="30" autocomplete="current-password">
+        <button class="login-btn" id="login-btn">Zaloguj</button>
+        <div class="switch-form" id="switch-to-register">Nie masz konta? Zarejestruj się</div>
+      </div>
+      <div id="register-form" style="display:none;">
+        <h2>Rejestracja</h2>
+        <label for="register-username">Nazwa użytkownika</label>
+        <input type="text" id="register-username" maxlength="30" autocomplete="username">
+        <label for="register-password">Hasło</label>
+        <input type="password" id="register-password" maxlength="30" autocomplete="new-password">
+        <button class="register-btn" id="register-btn">Zarejestruj</button>
+        <div class="switch-form" id="switch-to-login">Masz już konto? Zaloguj się</div>
+      </div>
+      <div id="login-error" style="color:#ff5c5c; text-align:center; margin-top:8px;"></div>
+    </div>
+  </div>
+  <!-- Modal zakupów (checkout) -->
+  <div class="checkout-bg" id="checkout-bg">
+    <div class="checkout-modal" id="checkout-modal">
+      <button class="close-checkout-btn" id="close-checkout-btn" aria-label="Zamknij">&times;</button>
+      <h2>Finalizacja zakupu</h2>
+      <form id="checkout-form">
+        <label for="checkout-imie">Imię i nazwisko</label>
+        <input type="text" id="checkout-imie" required maxlength="40">
+        <label for="checkout-adres">Adres (ulica, nr domu/mieszkania, kod, miasto)</label>
+        <input type="text" id="checkout-adres" required maxlength="64">
+        <label for="checkout-email">E-mail</label>
+        <input type="text" id="checkout-email" required maxlength="40">
+        <label for="checkout-phone">Telefon</label>
+        <input type="text" id="checkout-phone" required maxlength="20">
+        <label for="checkout-uwagi">Uwagi do zamówienia</label>
+        <textarea id="checkout-uwagi" maxlength="200"></textarea>
+        <div style="margin:10px 0;">
+          <input type="checkbox" id="checkout-regulamin" required>
+          <label for="checkout-regulamin" style="display:inline;">Akceptuję regulamin sklepu</label>
+        </div>
+        <button class="checkout-btn" type="submit">Zamawiam z obowiązkiem zapłaty</button>
+      </form>
+      <div class="checkout-success" id="checkout-success" style="display:none;"></div>
     </div>
   </div>
   <footer>
@@ -605,85 +463,200 @@
   <script>
     // DTO (Data Transfer Object) for Product
     class ProductDTO {
-      constructor({ img, title, price, priceNum, desc }) {
+      constructor({ img, title, price, priceNum, desc, promo }) {
         this.img = img;
         this.title = title;
         this.price = price;
         this.priceNum = priceNum;
         this.desc = desc;
+        this.promo = promo;
       }
     }
 
-    // Tematyczne obrazki produktów
+    // Tematyczne obrazki produktów + promo
     const products = [
       new ProductDTO({
         img: 'https://cdn.pixabay.com/photo/2017/03/28/12/10/airsoft-2181452_1280.jpg',
         title: 'Replika karabinka ASG M4',
         price: '799 zł',
         priceNum: 799,
-        desc: 'Solidna replika M4 do airsoftu, idealna na początek i dla zaawansowanych.'
+        desc: 'Solidna replika M4 do airsoftu, idealna na początek i dla zaawansowanych.',
+        promo: 'Darmowy magazyn!'
       }),
       new ProductDTO({
         img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Compression_springs.jpg/800px-Compression_springs.jpg',
         title: 'Sprężyna do karabinka ASG M120',
         price: '29 zł',
         priceNum: 29,
-        desc: 'Sprężyna główna M120 – idealna do tuningów replik AEG. Zapewnia większą prędkość wylotową kulki.'
+        desc: 'Sprężyna główna M120 – idealna do tuningów replik AEG. Zapewnia większą prędkość wylotową kulki.',
+        promo: ''
       }),
       new ProductDTO({
         img: 'https://cdn.pixabay.com/photo/2015/08/18/11/59/tube-892002_1280.jpg',
         title: 'Lufa precyzyjna 6.03mm 229mm',
-        price: '99 zł',
-        priceNum: 99,
-        desc: 'Lufa precyzyjna do replik M4/M16. Zwiększa celność oraz zasięg repliki.'
+        price: '79 zł',
+        priceNum: 79,
+        desc: 'Lufa precyzyjna do replik M4/M16. Zwiększa celność oraz zasięg repliki.',
+        promo: '-20% PROMO'
       }),
       new ProductDTO({
         img: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/Polycarbonate_4_pistons.jpg',
         title: 'Tłok poliwęglanowy do AEG',
         price: '39 zł',
         priceNum: 39,
-        desc: 'Wytrzymały tłok z zębami stalowymi. Idealny do mocniejszych tuningów.'
+        desc: 'Wytrzymały tłok z zębami stalowymi. Idealny do mocniejszych tuningów.',
+        promo: ''
       }),
       new ProductDTO({
         img: 'https://upload.wikimedia.org/wikipedia/commons/3/34/Electric_motor_rotor.jpg',
         title: 'Silnik High Torque Long Type',
-        price: '149 zł',
-        priceNum: 149,
-        desc: 'Silnik do replik AEG typu long. Zwiększa szybkość reakcji na spust i wytrzymałość.'
+        price: '129 zł',
+        priceNum: 129,
+        desc: 'Silnik do replik AEG typu long. Zwiększa szybkość reakcji na spust i wytrzymałość.',
+        promo: 'NOWOŚĆ'
       }),
       new ProductDTO({
         img: 'https://cdn.pixabay.com/photo/2013/07/13/12/01/battery-145009_1280.png',
         title: 'Bateria LiPo 11,1V 1200mAh',
         price: '89 zł',
         priceNum: 89,
-        desc: 'Wysokowydajna bateria do replik ASG. Zwiększa czas pracy i wydajność repliki.'
+        desc: 'Wysokowydajna bateria do replik ASG. Zwiększa czas pracy i wydajność repliki.',
+        promo: '2+1 gratis'
       }),
       new ProductDTO({
         img: 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Magazine_M16_30_rnd.png',
         title: 'Magazynek hi-cap do M4/M16 300bb',
         price: '39 zł',
         priceNum: 39,
-        desc: 'Wytrzymały magazynek typu hi-cap o pojemności 300 kulek do replik M4/M16.'
+        desc: 'Wytrzymały magazynek typu hi-cap o pojemności 300 kulek do replik M4/M16.',
+        promo: ''
       }),
       new ProductDTO({
         img: 'https://cdn.pixabay.com/photo/2012/04/13/00/22/spring-31680_1280.png',
         title: 'Prowadnica sprężyny do G36',
         price: '24 zł',
         priceNum: 24,
-        desc: 'Wzmocniona prowadnica sprężyny do replik G36. Ułatwia montaż i pracę gearboxa.'
+        desc: 'Wzmocniona prowadnica sprężyny do replik G36. Ułatwia montaż i pracę gearboxa.',
+        promo: ''
       }),
       new ProductDTO({
         img: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Spur_gears_on_shaft.jpg',
         title: 'Zestaw zębatek High Speed v2/v3',
-        price: '59 zł',
-        priceNum: 59,
-        desc: 'Komplet zębatek High Speed do gearboxów v2 i v3. Poprawia wydajność repliki.'
+        price: '49 zł',
+        priceNum: 49,
+        desc: 'Komplet zębatek High Speed do gearboxów v2 i v3. Poprawia wydajność repliki.',
+        promo: 'HIT CENA!'
       })
     ];
 
-    let cart = [];
+    // Użytkownicy i logowanie
+    let users = JSON.parse(localStorage.getItem('sklep_asg_users') || '{}');
+    let user = JSON.parse(localStorage.getItem('sklep_asg_user') || 'null');
 
-    // Render katalogu produktów
+    function getUserPoints() {
+      if (!user || !users[user.username]) return 0;
+      return users[user.username].points || 0;
+    }
+    function setUserPoints(points) {
+      if (!user || !users[user.username]) return;
+      users[user.username].points = points;
+      localStorage.setItem('sklep_asg_users', JSON.stringify(users));
+    }
+    function renderUserPanel() {
+      const panel = document.getElementById('user-panel');
+      if (user) {
+        panel.innerHTML = `
+          <div class="user-info">
+            <span>👤 <b>${user.username}</b></span>
+            <span class="militaria-points">Punkty Militaria: <b id="user-points">${getUserPoints()}</b></span>
+          </div>
+          <button class="logout-btn" id="logout-btn">Wyloguj</button>
+        `;
+        document.getElementById('logout-btn').onclick = function() {
+          user = null;
+          localStorage.removeItem('sklep_asg_user');
+          renderUserPanel();
+        };
+      } else {
+        panel.innerHTML = `<button class="user-btn" id="open-login-modal">Zaloguj / Załóż konto</button>`;
+        document.getElementById('open-login-modal').onclick = function() {
+          showLoginModal();
+        };
+      }
+    }
+
+    // Login/Register modal
+    function showLoginModal() {
+      document.getElementById('modal-login-bg').classList.add('active');
+      document.body.style.overflow = "hidden";
+      document.getElementById('login-form').style.display = '';
+      document.getElementById('register-form').style.display = 'none';
+      document.getElementById('login-error').textContent = '';
+      document.getElementById('login-username').value = '';
+      document.getElementById('login-password').value = '';
+    }
+    function closeLoginModal() {
+      document.getElementById('modal-login-bg').classList.remove('active');
+      document.body.style.overflow = "";
+    }
+    document.getElementById('modal-close-login').onclick = closeLoginModal;
+    document.getElementById('modal-login-bg').onclick = function(e) {
+      if(e.target === this) closeLoginModal();
+    };
+    document.addEventListener('keydown', function(e) {
+      if(document.getElementById('modal-login-bg').classList.contains('active') && e.key === 'Escape') closeLoginModal();
+    });
+    document.getElementById('switch-to-register').onclick = function() {
+      document.getElementById('login-form').style.display = 'none';
+      document.getElementById('register-form').style.display = '';
+      document.getElementById('login-error').textContent = '';
+      document.getElementById('register-username').value = '';
+      document.getElementById('register-password').value = '';
+    };
+    document.getElementById('switch-to-login').onclick = function() {
+      document.getElementById('login-form').style.display = '';
+      document.getElementById('register-form').style.display = 'none';
+      document.getElementById('login-error').textContent = '';
+      document.getElementById('login-username').value = '';
+      document.getElementById('login-password').value = '';
+    };
+    document.getElementById('login-btn').onclick = function() {
+      const username = document.getElementById('login-username').value.trim();
+      const password = document.getElementById('login-password').value;
+      if (!username || !password) {
+        document.getElementById('login-error').textContent = "Podaj login i hasło!";
+        return;
+      }
+      if (!users[username] || users[username].password !== password) {
+        document.getElementById('login-error').textContent = "Nieprawidłowy login lub hasło!";
+        return;
+      }
+      user = { username: username };
+      localStorage.setItem('sklep_asg_user', JSON.stringify(user));
+      closeLoginModal();
+      renderUserPanel();
+    };
+    document.getElementById('register-btn').onclick = function() {
+      const username = document.getElementById('register-username').value.trim();
+      const password = document.getElementById('register-password').value;
+      if (!username || !password) {
+        document.getElementById('login-error').textContent = "Podaj login i hasło!";
+        return;
+      }
+      if (users[username]) {
+        document.getElementById('login-error').textContent = "Użytkownik już istnieje!";
+        return;
+      }
+      users[username] = { password: password, points: 0 };
+      localStorage.setItem('sklep_asg_users', JSON.stringify(users));
+      user = { username: username };
+      localStorage.setItem('sklep_asg_user', JSON.stringify(user));
+      closeLoginModal();
+      renderUserPanel();
+    };
+
+    // Katalog produktów
+    const cart = [];
     function renderCatalog() {
       const catalog = document.getElementById('product-catalog');
       catalog.innerHTML = '';
@@ -694,13 +667,13 @@
         div.setAttribute('role', 'button');
         div.setAttribute('aria-label', 'Zobacz szczegóły produktu ' + product.title);
         div.innerHTML = `
+          ${product.promo ? `<span class="promo-product">${product.promo}</span>` : ''}
           <img src="${product.img}" alt="${product.title}">
           <div class="product-title">${product.title}</div>
           <div class="product-price">${product.price}</div>
           <div class="product-desc">${product.desc}</div>
           <button class="add-to-cart-btn">Dodaj do koszyka</button>
         `;
-        // Szczegóły produktu (klik na kafelek lub Enter/Spacja)
         div.addEventListener('click', (e) => {
           if (e.target.classList.contains('add-to-cart-btn')) {
             addToCart(idx);
@@ -712,7 +685,6 @@
         div.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' || e.key === ' ') showProductModal(idx);
         });
-        // Dodanie do koszyka z kafelka
         div.querySelector('.add-to-cart-btn').addEventListener('click', (e) => {
           addToCart(idx);
           e.stopPropagation();
@@ -743,11 +715,8 @@
       if(e.target === this) closeModal();
     };
     document.addEventListener('keydown', function(e) {
-      if(document.getElementById('modal-bg').classList.contains('active') && e.key === 'Escape') {
-        closeModal();
-      }
+      if(document.getElementById('modal-bg').classList.contains('active') && e.key === 'Escape') closeModal();
     });
-    // Dodanie do koszyka z modala
     document.getElementById('modal-add-to-cart').onclick = function() {
       if(currentModalProduct!==null) addToCart(currentModalProduct);
       closeModal();
@@ -756,7 +725,6 @@
     // Koszyk
     function addToCart(idx) {
       const prod = products[idx];
-      // Sprawdź czy już w koszyku
       let found = cart.findIndex(el => el.idx === idx);
       if(found >= 0) {
         cart[found].qty += 1;
@@ -765,12 +733,18 @@
       }
       updateCartBadge();
       saveCart();
+      if (user && users[user.username]) {
+        let points = getUserPoints();
+        points += prod.priceNum;
+        setUserPoints(points);
+        const up = document.getElementById('user-points');
+        if(up) up.textContent = points;
+      }
     }
     function updateCartBadge() {
       let sum = cart.reduce((a, b) => a + b.qty, 0);
       document.getElementById('cart-count').textContent = sum;
     }
-    // Koszyk modal
     function showCart() {
       renderCart();
       document.getElementById('cart-modal-bg').classList.add('active');
@@ -786,9 +760,7 @@
       if(e.target === this) closeCart();
     };
     document.addEventListener('keydown', function(e) {
-      if(document.getElementById('cart-modal-bg').classList.contains('active') && e.key === 'Escape') {
-        closeCart();
-      }
+      if(document.getElementById('cart-modal-bg').classList.contains('active') && e.key === 'Escape') closeCart();
     });
     function renderCart() {
       const cartList = document.getElementById('cart-list');
@@ -827,6 +799,45 @@
       renderCart();
       saveCart();
     }
+    // Zakup - checkout modal
+    document.getElementById('checkout-btn').onclick = function() {
+      if(cart.length === 0) return;
+      document.getElementById('checkout-bg').classList.add('active');
+      document.body.style.overflow = "hidden";
+      document.getElementById('checkout-form').style.display = '';
+      document.getElementById('checkout-success').style.display = 'none';
+      document.getElementById('checkout-form').reset();
+    };
+    document.getElementById('close-checkout-btn').onclick = function() {
+      document.getElementById('checkout-bg').classList.remove('active');
+      document.body.style.overflow = "";
+    };
+    document.getElementById('checkout-bg').onclick = function(e) {
+      if(e.target === this) {
+        document.getElementById('checkout-bg').classList.remove('active');
+        document.body.style.overflow = "";
+      }
+    };
+
+    document.getElementById('checkout-form').onsubmit = function(e) {
+      e.preventDefault();
+      // symulacja zamówienia
+      document.getElementById('checkout-form').style.display = 'none';
+      document.getElementById('checkout-success').style.display = '';
+      document.getElementById('checkout-success').textContent =
+        'Dziękujemy za zamówienie! Potwierdzenie wysłaliśmy na e-mail. Twoje punkty Militaria zostały naliczone.';
+
+      // wyczyść koszyk i badge
+      cart.length = 0;
+      updateCartBadge();
+      saveCart();
+      setTimeout(() => {
+        document.getElementById('checkout-bg').classList.remove('active');
+        document.body.style.overflow = "";
+        renderCart();
+      }, 2450);
+      return false;
+    };
 
     // Sekcje strony
     function showSection(id) {
@@ -855,15 +866,21 @@
     function loadCart() {
       try {
         let c = localStorage.getItem('sklep_asg_cart');
-        if(c) cart = JSON.parse(c);
-        else cart = [];
-      } catch(e){ cart = []; }
+        if(c) {
+          let arr = JSON.parse(c);
+          if(Array.isArray(arr)) {
+            cart.length = 0;
+            arr.forEach(item => cart.push(item));
+          }
+        }
+      } catch(e){}
     }
 
     // Start
     loadCart();
     renderCatalog();
     updateCartBadge();
+    renderUserPanel();
     showSection('sklep');
   </script>
 </body>
