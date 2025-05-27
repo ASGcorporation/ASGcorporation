@@ -40,9 +40,6 @@
       margin: 0;
       position: relative;
       box-shadow: var(--shadow);
-      <div class="promo-bar">
-  🎯 WIOSENNE PROMOCJE: Lufa precyzyjna -20%! | 🏆 Do każdego zamówienia losowy prezent! | 🚚 Darmowa wysyłka od 500 zł | 🔥 -10% na pierwsze zakupy kod: <b>START10</b>
-</div>
     }
     .promo-bar {
       background: var(--promo-yellow);
@@ -309,26 +306,133 @@
       background: var(--button-hover);
       color: var(--main);
     }
-    /* ...rest of your CSS (modals, info-sections, etc.)... */
-    .cart-modal .checkout-btn {
+    .cart-modal-bg {
+      position: fixed; left: 0; top: 0; right: 0; bottom: 0;
+      background: rgba(23,60,34,0.91);
+      z-index: 2100;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .cart-modal-bg.active { display: flex; }
+    .cart-modal {
+      background: #23281d;
+      color: var(--text);
+      border-radius: 16px;
+      max-width: 98vw;
+      width: 370px;
+      margin-top: 34px;
+      padding: 30px 16px 24px 16px;
+      box-shadow: 0 8px 42px #000c;
+      position: relative;
+      font-size: 1.11em;
+      z-index: 1102;
+    }
+    .cart-modal .cart-close-btn {
+      position: absolute;
+      top: 7px; right: 14px;
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 1.7em;
+      cursor: pointer;
+      transition: color .14s;
+      font-family: "Russo One", Arial, sans-serif;
+    }
+    .cart-modal .cart-close-btn:hover {
+      color: var(--button-hover);
+    }
+    .cart-modal h2 {
+      color: var(--accent);
+      margin: 0 0 18px 0;
+      font-family: 'Russo One', Arial, sans-serif;
+      text-align: center;
+      font-size: 1.21em;
+    }
+    .cart-list {
+      list-style: none;
+      margin: 0 0 18px 0;
+      padding: 0;
+      max-height: 270px;
+      overflow-y: auto;
+    }
+    .cart-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      background: #212415;
+      border-radius: 7px;
+      padding: 8px 4px 8px 8px;
+      border: 1.5px solid #295e2c;
+    }
+    .cart-list img {
+      width: 48px;
+      height: 38px;
+      object-fit: cover;
+      border-radius: 5px;
+      background: #1b251b;
+      box-shadow: 0 2px 8px #0001;
+      border: 1px solid #28532a;
+    }
+    .cart-prod-title {
+      font-size: 1em;
+      color: var(--accent);
+      flex: 1 1 auto;
+      font-weight: bold;
+    }
+    .cart-prod-price {
+      color: #96e848;
+      font-size: 1em;
+      font-weight: 700;
+      margin-right: 8px;
+    }
+    .cart-remove-btn {
+      background: #a32323;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: .97em;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: background .14s;
+    }
+    .cart-remove-btn:hover {
+      background: #e74c3c;
+    }
+    .cart-total {
+      font-size: 1.12em;
+      text-align: right;
+      color: var(--accent);
+      font-weight: bold;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+    .checkout-btn {
       width: 100%;
-      margin-top: 12px;
+      margin-bottom: 16px;
       background: var(--button);
       color: var(--white);
       border: none;
       border-radius: 7px;
-      padding: 10px 0;
+      padding: 12px 0;
       font-size: 1.09em;
       font-weight: bold;
       cursor: pointer;
       box-shadow: 0 2px 10px #0005;
       transition: background 0.18s, color 0.18s;
+      display: block;
     }
-    .cart-modal .checkout-btn:hover { background: var(--button-hover); color: var(--main);}
+    .checkout-btn:hover { background: var(--button-hover); color: var(--main);}
+    .cart-empty {
+      color: #a2f05e;
+      text-align: center;
+      margin: 12px 0 20px 0;
+    }
     .checkout-modal-bg {
       position: fixed; left: 0; top: 0; right: 0; bottom: 0;
       background: rgba(23,60,34,0.91);
-      z-index: 2100;
+      z-index: 2200;
       display: none;
       align-items: center;
       justify-content: center;
@@ -366,6 +470,7 @@
       font-weight: bold;
       font-size: 1.1em;
     }
+    /* ... Pozostałe style ... */
     footer {
       background: #173c22;
       color: #a2f05e;
@@ -448,9 +553,9 @@
     <div class="cart-modal" id="cart-modal">
       <button class="cart-close-btn" id="cart-close-btn" aria-label="Zamknij">&#10005;</button>
       <h2>Twój koszyk</h2>
+      <button class="checkout-btn" id="checkout-btn">Przejdź do zamówienia</button>
       <ul class="cart-list" id="cart-list"></ul>
       <div class="cart-total" id="cart-total"></div>
-      <button class="checkout-btn" id="checkout-btn">Przejdź do zamówienia</button>
       <div class="cart-empty" id="cart-empty" style="display:none;">Koszyk jest pusty.</div>
     </div>
   </div>
@@ -528,7 +633,6 @@
       }
     }
 
-    // Tematyczne obrazki produktów
     const products = [
       new ProductDTO({
         img: 'https://cdn.pixabay.com/photo/2017/03/28/12/10/airsoft-2181452_1280.jpg',
@@ -595,9 +699,9 @@
       })
     ];
 
-    // Użytkownicy i logowanie
     let users = JSON.parse(localStorage.getItem('sklep_asg_users') || '{}');
     let user = JSON.parse(localStorage.getItem('sklep_asg_user') || 'null');
+    let cart = [];
 
     function getUserPoints() {
       if (!user || !users[user.username]) return 0;
@@ -706,9 +810,6 @@
     };
 
     // Koszyk
-    let cart = [];
-
-    // Render katalogu produktów
     function renderCatalog() {
       const catalog = document.getElementById('product-catalog');
       catalog.innerHTML = '';
@@ -744,7 +845,6 @@
       });
     }
 
-    // Modal produktu
     let currentModalProduct = null;
     function showProductModal(idx) {
       currentModalProduct = idx;
@@ -790,7 +890,6 @@
       document.getElementById('cart-count').textContent = sum;
     }
 
-    // Koszyk modal
     function showCart() {
       renderCart();
       document.getElementById('cart-modal-bg').classList.add('active');
@@ -869,13 +968,11 @@
     };
     document.getElementById('checkout-form').onsubmit = function(e) {
       e.preventDefault();
-      // oblicz sumę zamówienia do naliczenia punktów
       let total = 0;
       cart.forEach(item => {
         const prod = products[item.idx];
         total += prod.priceNum * item.qty;
       });
-      // nalicz punkty po zakupie
       if (user && users[user.username]) {
         let points = getUserPoints();
         points += total; // 1zł = 1 pkt
@@ -934,7 +1031,6 @@
       } catch(e){}
     }
 
-    // Start
     loadCart();
     renderCatalog();
     updateCartBadge();
