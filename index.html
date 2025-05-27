@@ -76,12 +76,12 @@
       transition: color 0.2s;
       cursor: pointer;
     }
-    nav a:hover {
+    nav a.active, nav a:hover {
       color: #b7c846;
       text-shadow: 0 1px 4px #000;
     }
     main {
-      max-width: 850px;
+      max-width: 900px;
       margin: 44px auto 80px auto;
       background: rgba(40,49,26,0.97);
       padding: 34px;
@@ -94,10 +94,10 @@
     section.active {
       display: block;
     }
-    section h2 {
+    h2 {
       color: #b7c846;
       margin-top: 0;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       letter-spacing: 2px;
     }
     ul {
@@ -120,23 +120,27 @@
     .product-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 28px;
-      margin-top: 24px;
+      gap: 26px;
+      margin-top: 10px;
     }
     .product {
       background: #2d3522;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.13);
-      padding: 18px 16px 12px 16px;
+      padding: 18px 16px 18px 16px;
       width: 220px;
       text-align: center;
       transition: box-shadow 0.22s;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
     .product:hover {
       box-shadow: 0 6px 22px #00000033;
     }
     .product img {
-      max-width: 80%;
+      max-width: 92%;
       border-radius: 6px;
       margin-bottom: 10px;
     }
@@ -158,33 +162,22 @@
     }
     .btn-back {
       display: inline-block;
-      margin-top: 22px;
+      margin-top: 32px;
       background: #3a4524;
       color: #e5e5e5;
       border: none;
       border-radius: 5px;
-      padding: 8px 20px;
+      padding: 10px 30px;
       cursor: pointer;
       font-size: 1em;
       font-family: inherit;
       font-weight: bold;
       transition: background 0.2s, color 0.2s;
+      text-decoration: none;
     }
     .btn-back:hover {
       background: #b7c846;
       color: #23281d;
-    }
-    footer {
-      background-color: #23281d;
-      color: #b7c846;
-      text-align: center;
-      padding: 16px 0;
-      position: fixed;
-      width: 100%;
-      bottom: 0;
-      font-size: 1em;
-      letter-spacing: 1px;
-      box-shadow: 0 -3px 12px #000;
     }
     @media (max-width: 600px) {
       main {
@@ -207,6 +200,18 @@
         width: 100%;
       }
     }
+    footer {
+      background-color: #23281d;
+      color: #b7c846;
+      text-align: center;
+      padding: 16px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      font-size: 1em;
+      letter-spacing: 1px;
+      box-shadow: 0 -3px 12px #000;
+    }
   </style>
 </head>
 <body>
@@ -216,45 +221,62 @@
     <p>Wszystkie części znajdziesz na <strong>www.części-asg.pl</strong>. Gwarancja jakości oraz klimatu militarnego!</p>
   </header>
   <nav>
-    <a data-section="sklep">Sklep</a>
-    <a data-section="uslugi">O nas</a>
-    <a data-section="kontakt">Kontakt</a>
+    <a href="#" class="active" data-section="start">Strona główna</a>
+    <a href="#" data-section="sklep">Sklep</a>
+    <a href="#" data-section="uslugi">O nas</a>
+    <a href="#" data-section="kontakt">Kontakt</a>
   </nav>
   <main>
-    <section id="sklep" class="active">
-      <h2>Sklep</h2>
-      <button id="goToProducts" class="btn-back" style="margin-bottom:18px;">Przejdź do produktów</button>
-      <p>Zapraszamy do naszego sklepu internetowego: <a href="https://www.części-asg.pl/" target="_blank" rel="noopener noreferrer">www.części-asg.pl</a></p>
+    <section id="start" class="active">
+      <h2>Witaj na stronie głównej</h2>
+      <p>Zapraszamy do naszego sklepu internetowego z częściami i akcesoriami ASG!</p>
+      <ul>
+        <li>Najlepsze części do replik ASG</li>
+        <li>Akcesoria militarne i outdoorowe</li>
+        <li>Profesjonalne doradztwo</li>
+      </ul>
     </section>
-    <section id="produkty">
-      <h2>Przykładowe produkty</h2>
+    <section id="sklep">
+      <h2>Przykładowe produkty ASG</h2>
       <div class="product-list">
         <div class="product">
-          <img src="https://cdn.pixabay.com/photo/2017/01/06/19/15/airsoft-1959319_1280.jpg" alt="Replika ASG M4">
-          <div class="product-title">Replika ASG M4 Specna Arms</div>
-          <div class="product-price">799 zł</div>
-          <div class="product-desc">Solidna replika M4 do airsoftu, idealna na początek i dla zaawansowanych.</div>
+          <img src="https://www.taiwangun.com/media/products/9c/3f/9c3f7f6f3c3e2fbbf3c3d6ef57f6b5e9/images/large_M120.jpg" alt="Sprężyna M120">
+          <div class="product-title">Sprężyna do karabinka ASG M120</div>
+          <div class="product-price">29 zł</div>
+          <div class="product-desc">Sprężyna główna M120 – idealna do tuningów replik AEG. Zapewnia większą prędkość wylotową kulki.</div>
         </div>
         <div class="product">
-          <img src="https://cdn.pixabay.com/photo/2017/09/06/11/12/airsoft-2726717_1280.jpg" alt="Kulki ASG 0.25g">
-          <div class="product-title">Kulki ASG 0.25g G&G</div>
-          <div class="product-price">35 zł</div>
-          <div class="product-desc">Wysokiej jakości kulki do replik ASG, precyzja i niezawodność.</div>
+          <img src="https://gunfire.pl/pol_pm_Lufa-precyzyjna-6-03mm-o-dlugosci-229mm-do-M4-26176_2.jpg" alt="Lufa precyzyjna ASG">
+          <div class="product-title">Lufa precyzyjna 6.03mm 229mm</div>
+          <div class="product-price">99 zł</div>
+          <div class="product-desc">Lufa precyzyjna do replik M4/M16. Zwiększa celność oraz zasięg repliki.</div>
         </div>
         <div class="product">
-          <img src="https://cdn.pixabay.com/photo/2017/08/06/00/56/airsoft-2591437_1280.jpg" alt="Magazynek hi-cap">
-          <div class="product-title">Magazynek hi-cap M4/M16 300bb</div>
-          <div class="product-price">49 zł</div>
-          <div class="product-desc">Wytrzymały magazynek do replik typu M4/M16. Pojemność 300 kulek.</div>
+          <img src="https://gunfire.pl/pol_pm_Tlok-polipropylenowy-do-replik-AEG-11865_1.jpg" alt="Tłok ASG">
+          <div class="product-title">Tłok poliwęglanowy do AEG</div>
+          <div class="product-price">39 zł</div>
+          <div class="product-desc">Wytrzymały tłok z zębami stalowymi. Idealny do mocniejszych tuningów.</div>
         </div>
         <div class="product">
-          <img src="https://cdn.pixabay.com/photo/2016/11/29/04/15/airsoft-1861575_1280.jpg" alt="Ochrona oczu ASG">
-          <div class="product-title">Ochrona oczu Swiss Eye</div>
-          <div class="product-price">69 zł</div>
-          <div class="product-desc">Wysokiej jakości okulary ochronne dedykowane do ASG i outdooru.</div>
+          <img src="https://gunfire.pl/pol_pm_Silnik-Long-Type-High-Torque-19513_1.jpg" alt="Silnik ASG">
+          <div class="product-title">Silnik High Torque Long Type</div>
+          <div class="product-price">149 zł</div>
+          <div class="product-desc">Silnik do replik AEG typu long. Zwiększa szybkość reakcji na spust i wytrzymałość.</div>
+        </div>
+        <div class="product">
+          <img src="https://gunfire.pl/pol_pm_Bateria-LiPo-11-1V-1200mAh-20-40C-stick-12454_1.jpg" alt="Bateria LiPo ASG">
+          <div class="product-title">Bateria LiPo 11,1V 1200mAh</div>
+          <div class="product-price">89 zł</div>
+          <div class="product-desc">Wysokowydajna bateria do replik ASG. Zwiększa czas pracy i wydajność repliki.</div>
+        </div>
+        <div class="product">
+          <img src="https://gunfire.pl/pol_pm_Magazynek-hi-cap-do-M4-300-kulek-11809_1.jpg" alt="Magazynek ASG">
+          <div class="product-title">Magazynek hi-cap do M4/M16 300bb</div>
+          <div class="product-price">39 zł</div>
+          <div class="product-desc">Wytrzymały magazynek typu hi-cap o pojemności 300 kulek do replik M4/M16.</div>
         </div>
       </div>
-      <button id="backToShop" class="btn-back">Powrót do sklepu</button>
+      <a href="#" class="btn-back" data-section="start">Powrót na stronę główną</a>
     </section>
     <section id="uslugi">
       <h2>Nasze usługi</h2>
@@ -286,37 +308,30 @@
     </div>
   </noscript>
   <script>
-    // Sekcje i nawigacja
-    const sections = document.querySelectorAll('main > section');
-    const navLinks = document.querySelectorAll('nav a');
+    // Przełączanie sekcji
     function showSection(id) {
-      sections.forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('main > section').forEach(sec => sec.classList.remove('active'));
       document.getElementById(id).classList.add('active');
+      document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+      // Ustaw aktywny link nawigacyjny jeśli taki istnieje
+      document.querySelectorAll('nav a').forEach(link => {
+        if(link.getAttribute('data-section') === id) link.classList.add('active');
+      });
     }
-    navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        const sectionId = link.getAttribute('data-section');
-        if(sectionId === "sklep") {
-          showSection('sklep');
-        } else if(sectionId === "uslugi") {
-          showSection('uslugi');
-        } else if(sectionId === "kontakt") {
-          showSection('kontakt');
+
+    // Obsługa kliknięć w menu
+    document.querySelectorAll('nav a, .btn-back').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const target = this.getAttribute('data-section');
+        if (target) {
+          e.preventDefault();
+          showSection(target);
         }
       });
     });
 
-    // Przejście na stronę produktów po kliknięciu w "Przejdź do produktów"
-    document.getElementById('goToProducts').addEventListener('click', () => {
-      showSection('produkty');
-    });
-    // Powrót do sklepu
-    document.getElementById('backToShop').addEventListener('click', () => {
-      showSection('sklep');
-    });
-
-    // Domyślnie pokazuj sekcję sklep
-    showSection('sklep');
+    // Domyślnie pokazuj stronę główną
+    showSection('start');
   </script>
 </body>
 </html>
