@@ -23,6 +23,8 @@
       --cart-bg: #1b251b;
       --green: #2e853c;
       --militaria: #a2f05e;
+      --promo-yellow: #fffde3;
+      --promo-text: #786a00;
     }
     html, body {
       margin: 0; padding: 0;
@@ -38,6 +40,16 @@
       margin: 0;
       position: relative;
       box-shadow: var(--shadow);
+    }
+    .promo-bar {
+      background: var(--promo-yellow);
+      color: var(--promo-text);
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.08em;
+      padding: 12px 10px 8px 10px;
+      border-bottom: 2px solid #e4e7d7;
+      letter-spacing: 0.5px;
     }
     .top-bar {
       display: flex;
@@ -121,7 +133,6 @@
       z-index: 9;
       pointer-events: none;
     }
-    /* Nowe: panel użytkownika i punkty */
     .user-panel {
       display: flex;
       align-items: center;
@@ -165,59 +176,6 @@
       margin-left: 7px;
       display: inline-block;
     }
-    /* Modal logowania/rejestracji */
-    .modal-login-bg {
-      position: fixed; left: 0; top: 0; right: 0; bottom: 0;
-      background: rgba(23,60,34,0.91);
-      z-index: 2000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-    .modal-login-bg.active { display: flex; }
-    .modal-login {
-      background: #1e2d1c;
-      color: var(--text);
-      border-radius: 16px;
-      min-width: 300px;
-      width: 95vw;
-      max-width: 390px;
-      box-shadow: 0 8px 42px #000c;
-      padding: 32px 22px 22px 22px;
-      position: relative;
-      font-size: 1.08em;
-      animation: modalPop .18s linear;
-    }
-    .modal-login h2 { color: var(--accent); margin: 0 0 18px 0; text-align: center; }
-    .modal-login label { display: block; margin-bottom: 5px; margin-top: 9px; }
-    .modal-login input[type="text"], .modal-login input[type="password"] {
-      width: 100%; border-radius: 7px; border: 1.5px solid #295e2c;
-      padding: 9px; font-size: 1em; margin-bottom: 8px;
-      background: #203a21; color: var(--text);
-    }
-    .modal-login .login-btn, .modal-login .register-btn {
-      width: 100%; margin-top: 7px; padding: 11px; font-size: 1.07em;
-      background: var(--button); color: var(--white);
-      border: none; border-radius: 7px; font-weight: bold;
-      cursor: pointer; transition: background 0.18s, color 0.18s;
-    }
-    .modal-login .login-btn:hover, .modal-login .register-btn:hover {
-      background: var(--button-hover); color: var(--main);
-    }
-    .modal-login .switch-form {
-      text-align: center; margin-top: 10px; color: #a2f05e;
-      cursor: pointer; font-size: 0.99em;
-    }
-    .modal-login .modal-close-login {
-      position: absolute; top: 8px; right: 12px; background: none; border: none;
-      color: #a2f05e; font-size: 1.6em; cursor: pointer;
-      transition: color .14s;
-    }
-    .modal-login .modal-close-login:hover { color: #fff; }
-    /* Reszta jak poprzednio */
-    /* ... zostaw resztę stylów bez zmian ... */
-    /* ... patrz wcześniejsze odpowiedzi ... */
-    /* ... */
     .cta-hero {
       text-align: center;
       padding: 48px 8vw 44px 8vw;
@@ -348,7 +306,63 @@
       background: var(--button-hover);
       color: var(--main);
     }
-    /* ...reszta stylów jak wcześniej... */
+    /* ...rest of your CSS (modals, info-sections, etc.)... */
+    .cart-modal .checkout-btn {
+      width: 100%;
+      margin-top: 12px;
+      background: var(--button);
+      color: var(--white);
+      border: none;
+      border-radius: 7px;
+      padding: 10px 0;
+      font-size: 1.09em;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 10px #0005;
+      transition: background 0.18s, color 0.18s;
+    }
+    .cart-modal .checkout-btn:hover { background: var(--button-hover); color: var(--main);}
+    .checkout-modal-bg {
+      position: fixed; left: 0; top: 0; right: 0; bottom: 0;
+      background: rgba(23,60,34,0.91);
+      z-index: 2100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .checkout-modal-bg.active { display: flex; }
+    .checkout-modal {
+      background: #1e2d1c;
+      color: var(--text);
+      border-radius: 16px;
+      min-width: 320px;
+      width: 95vw;
+      max-width: 390px;
+      box-shadow: 0 8px 42px #000c;
+      padding: 32px 22px 22px 22px;
+      font-size: 1.08em;
+      animation: modalPop .18s linear;
+      position: relative;
+    }
+    .checkout-modal label { display: block; margin-bottom: 5px; margin-top: 9px; }
+    .checkout-modal input, .checkout-modal textarea {
+      width: 100%; border-radius: 7px; border: 1.5px solid #295e2c;
+      padding: 9px; font-size: 1em; margin-bottom: 8px;
+      background: #203a21; color: var(--text);
+    }
+    .checkout-modal .close-checkout-btn {
+      position: absolute; top: 8px; right: 12px; background: none; border: none;
+      color: #a2f05e; font-size: 1.6em; cursor: pointer;
+      transition: color .14s;
+    }
+    .checkout-modal .close-checkout-btn:hover { color: #fff; }
+    .checkout-modal .checkout-success {
+      color: #a2f05e;
+      margin: 20px 0 0 0;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
     footer {
       background: #173c22;
       color: #a2f05e;
@@ -363,6 +377,9 @@
 </head>
 <body>
   <header>
+    <div class="promo-bar">
+      🎯 WIOSENNE PROMOCJE: Lufa precyzyjna -20%! | 🏆 Do każdego zamówienia losowy prezent! | 🚚 Darmowa wysyłka od 500 zł | 🔥 -10% na pierwsze zakupy kod: <b>START10</b>
+    </div>
     <div class="top-bar">
       <div class="logo-bar">
         <img src="https://cdn-icons-png.flaticon.com/512/2983/2983652.png" alt="ASG sklep logo">
@@ -430,6 +447,7 @@
       <h2>Twój koszyk</h2>
       <ul class="cart-list" id="cart-list"></ul>
       <div class="cart-total" id="cart-total"></div>
+      <button class="checkout-btn" id="checkout-btn">Przejdź do zamówienia</button>
       <div class="cart-empty" id="cart-empty" style="display:none;">Koszyk jest pusty.</div>
     </div>
   </div>
@@ -456,6 +474,31 @@
         <div class="switch-form" id="switch-to-login">Masz już konto? Zaloguj się</div>
       </div>
       <div id="login-error" style="color:#ff5c5c; text-align:center; margin-top:8px;"></div>
+    </div>
+  </div>
+  <!-- Modal checkout (finalizacja zakupu) -->
+  <div class="checkout-modal-bg" id="checkout-modal-bg">
+    <div class="checkout-modal" id="checkout-modal">
+      <button class="close-checkout-btn" id="close-checkout-btn" aria-label="Zamknij">&times;</button>
+      <h2>Finalizacja zamówienia</h2>
+      <form id="checkout-form">
+        <label for="client-name">Imię i nazwisko</label>
+        <input type="text" id="client-name" required maxlength="50">
+        <label for="client-address">Adres (ulica, nr domu/mieszkania, kod, miasto)</label>
+        <input type="text" id="client-address" required maxlength="64">
+        <label for="client-email">E-mail</label>
+        <input type="email" id="client-email" required maxlength="40">
+        <label for="client-phone">Telefon</label>
+        <input type="text" id="client-phone" required maxlength="20">
+        <label for="client-notes">Uwagi do zamówienia</label>
+        <textarea id="client-notes" maxlength="200"></textarea>
+        <div style="margin:10px 0;">
+          <input type="checkbox" id="client-accept" required>
+          <label for="client-accept" style="display:inline;">Akceptuję regulamin sklepu</label>
+        </div>
+        <button class="checkout-btn" type="submit">Zamawiam z obowiązkiem zapłaty</button>
+      </form>
+      <div class="checkout-success" id="checkout-success" style="display:none;"></div>
     </div>
   </div>
   <footer>
@@ -553,7 +596,6 @@
     let users = JSON.parse(localStorage.getItem('sklep_asg_users') || '{}');
     let user = JSON.parse(localStorage.getItem('sklep_asg_user') || 'null');
 
-    // Punkty
     function getUserPoints() {
       if (!user || !users[user.username]) return 0;
       return users[user.username].points || 0;
@@ -564,7 +606,6 @@
       localStorage.setItem('sklep_asg_users', JSON.stringify(users));
     }
 
-    // User panel (login/register/punkty)
     function renderUserPanel() {
       const panel = document.getElementById('user-panel');
       if (user) {
@@ -626,7 +667,6 @@
       document.getElementById('login-password').value = '';
     };
 
-    // Login logic
     document.getElementById('login-btn').onclick = function() {
       const username = document.getElementById('login-username').value.trim();
       const password = document.getElementById('login-password').value;
@@ -643,7 +683,6 @@
       closeLoginModal();
       renderUserPanel();
     };
-    // Register logic
     document.getElementById('register-btn').onclick = function() {
       const username = document.getElementById('register-username').value.trim();
       const password = document.getElementById('register-password').value;
@@ -663,8 +702,8 @@
       renderUserPanel();
     };
 
-    // Dane produktów jako instancje ProductDTO
-    const cart = [];
+    // Koszyk
+    let cart = [];
 
     // Render katalogu produktów
     function renderCatalog() {
@@ -683,7 +722,6 @@
           <div class="product-desc">${product.desc}</div>
           <button class="add-to-cart-btn">Dodaj do koszyka</button>
         `;
-        // Szczegóły produktu (klik na kafelek lub Enter/Spacja)
         div.addEventListener('click', (e) => {
           if (e.target.classList.contains('add-to-cart-btn')) {
             addToCart(idx);
@@ -695,7 +733,6 @@
         div.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' || e.key === ' ') showProductModal(idx);
         });
-        // Dodanie do koszyka z kafelka
         div.querySelector('.add-to-cart-btn').addEventListener('click', (e) => {
           addToCart(idx);
           e.stopPropagation();
@@ -730,17 +767,13 @@
         closeModal();
       }
     });
-    // Dodanie do koszyka z modala
     document.getElementById('modal-add-to-cart').onclick = function() {
       if(currentModalProduct!==null) addToCart(currentModalProduct);
       closeModal();
     };
 
-    // Koszyk
     function addToCart(idx) {
-      const prod = products[idx];
-      // Sprawdź czy już w koszyku
-      let found = cart.findIndex(el => el.idx === idx);
+      const found = cart.findIndex(el => el.idx === idx);
       if(found >= 0) {
         cart[found].qty += 1;
       } else {
@@ -748,20 +781,12 @@
       }
       updateCartBadge();
       saveCart();
-      // Dodaj punkty użytkownikowi
-      if (user && users[user.username]) {
-        let points = getUserPoints();
-        points += prod.priceNum; // 1zł = 1 pkt Militaria, możesz zmienić
-        setUserPoints(points);
-        // odśwież punkty na panelu
-        const up = document.getElementById('user-points');
-        if(up) up.textContent = points;
-      }
     }
     function updateCartBadge() {
       let sum = cart.reduce((a, b) => a + b.qty, 0);
       document.getElementById('cart-count').textContent = sum;
     }
+
     // Koszyk modal
     function showCart() {
       renderCart();
@@ -820,6 +845,56 @@
       saveCart();
     }
 
+    // CHECKOUT MODAL
+    document.getElementById('checkout-btn').onclick = function() {
+      if(cart.length === 0) return;
+      document.getElementById('checkout-modal-bg').classList.add('active');
+      document.body.style.overflow = "hidden";
+      document.getElementById('checkout-form').style.display = '';
+      document.getElementById('checkout-success').style.display = 'none';
+      document.getElementById('checkout-form').reset();
+    };
+    document.getElementById('close-checkout-btn').onclick = function() {
+      document.getElementById('checkout-modal-bg').classList.remove('active');
+      document.body.style.overflow = "";
+    };
+    document.getElementById('checkout-modal-bg').onclick = function(e) {
+      if(e.target === this) {
+        document.getElementById('checkout-modal-bg').classList.remove('active');
+        document.body.style.overflow = "";
+      }
+    };
+    document.getElementById('checkout-form').onsubmit = function(e) {
+      e.preventDefault();
+      // oblicz sumę zamówienia do naliczenia punktów
+      let total = 0;
+      cart.forEach(item => {
+        const prod = products[item.idx];
+        total += prod.priceNum * item.qty;
+      });
+      // nalicz punkty po zakupie
+      if (user && users[user.username]) {
+        let points = getUserPoints();
+        points += total; // 1zł = 1 pkt
+        setUserPoints(points);
+        const up = document.getElementById('user-points');
+        if(up) up.textContent = points;
+      }
+      document.getElementById('checkout-form').style.display = 'none';
+      document.getElementById('checkout-success').style.display = '';
+      document.getElementById('checkout-success').textContent =
+        'Dziękujemy za zamówienie! Potwierdzenie wysłaliśmy na e-mail. Twoje punkty Militaria zostały naliczone.';
+      cart = [];
+      updateCartBadge();
+      saveCart();
+      setTimeout(() => {
+        document.getElementById('checkout-modal-bg').classList.remove('active');
+        document.body.style.overflow = "";
+        renderCart();
+      }, 2300);
+      return false;
+    };
+
     // Sekcje strony
     function showSection(id) {
       document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
@@ -850,8 +925,7 @@
         if(c) {
           let arr = JSON.parse(c);
           if(Array.isArray(arr)) {
-            cart.length = 0;
-            arr.forEach(item => cart.push(item));
+            cart = arr;
           }
         }
       } catch(e){}
