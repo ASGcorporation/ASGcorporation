@@ -283,6 +283,23 @@
       background: #a2f05e;
       color: #173c22;
     }
+    .remove-product-btn {
+      background: #ba2323;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: .93em;
+      padding: 7px 17px;
+      font-weight: bold;
+      margin-top: 11px;
+      margin-bottom: 2px;
+      cursor: pointer;
+      transition: background .17s;
+      box-shadow: 0 1px 5px #0003;
+    }
+    .remove-product-btn:hover {
+      background: #e74c3c;
+    }
     .info-sections {
       display: flex;
       flex-wrap: wrap;
@@ -454,7 +471,6 @@
       text-align: center;
       margin: 12px 0 20px 0;
     }
-    /* Modal product, modal login, modal checkout already styled above */
     @media (max-width: 900px) {
       .product-catalog { grid-template-columns: 1fr 1fr; }
       .info-sections { flex-direction: column; gap: 22px; align-items: stretch; }
@@ -472,7 +488,7 @@
 </head>
 <body>
   <div class="promo-bar">
-    🎯 WIOSENNE PROMOCJE: Lufa precyzyjna -20%! | 🏆 Do każdego zamówienia losowy prezent! | 🚚 Darmowa wysyłka od 50 zł | 🔥 -10% na pierwsze zakupy kod: <b>START10</b>
+    🎯 WIOSENNE PROMOCJE: Lufa precyzyjna -20%! | 🏆 Do każdego zamówienia losowy prezent! | 🚚 Darmowa wysyłka od 500 zł | 🔥 -10% na pierwsze zakupy kod: <b>START10</b>
   </div>
   <header>
     <div class="top-bar">
@@ -722,6 +738,21 @@
       }
     }
 
+    // Usuwanie produktu z katalogu
+    function removeProduct(idx) {
+      products.splice(idx, 1);
+      // Usuwamy produkt z koszyka jeśli był
+      cart = cart.filter(item => item.idx !== idx);
+      // Dostosuj indeksy produktów w koszyku
+      cart.forEach(item => {
+        if(item.idx > idx) item.idx--;
+      });
+      saveCart();
+      renderCatalog();
+      renderCart();
+      updateCartBadge();
+    }
+
     // Login/Register modal
     function showLoginModal() {
       document.getElementById('modal-login-bg').classList.add('active');
@@ -809,21 +840,28 @@
           <div class="product-price">${product.price}</div>
           <div class="product-desc">${product.desc}</div>
           <button class="add-to-cart-btn">Dodaj do koszyka</button>
+          <button class="remove-product-btn" title="Usuń produkt">&#128465; Usuń</button>
         `;
+        // Dodanie do koszyka
+        div.querySelector('.add-to-cart-btn').addEventListener('click', (e) => {
+          addToCart(idx);
+          e.stopPropagation();
+        });
+        // Usuwanie produktu z katalogu
+        div.querySelector('.remove-product-btn').addEventListener('click', (e) => {
+          if (confirm('Czy na pewno chcesz usunąć ten produkt?')) {
+            removeProduct(idx);
+          }
+          e.stopPropagation();
+        });
+        // Szczegóły produktu (klik na kafelek lub Enter/Spacja)
         div.addEventListener('click', (e) => {
-          if (e.target.classList.contains('add-to-cart-btn')) {
-            addToCart(idx);
-            e.stopPropagation();
-          } else {
+          if (!e.target.classList.contains('add-to-cart-btn') && !e.target.classList.contains('remove-product-btn')) {
             showProductModal(idx);
           }
         });
         div.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' || e.key === ' ') showProductModal(idx);
-        });
-        div.querySelector('.add-to-cart-btn').addEventListener('click', (e) => {
-          addToCart(idx);
-          e.stopPropagation();
         });
         catalog.appendChild(div);
       });
